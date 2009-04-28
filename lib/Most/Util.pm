@@ -17,6 +17,7 @@ my @modules = qw(
 foreach my $module (@modules) {
   # use the module
   eval "use $module ();";
+  die $@ if $@; ## no critic
 
   # work out what they import
   my @function_list = do {
@@ -71,7 +72,7 @@ Or by module name:
   use More::Util qw(:Scalar::Util :List::Util);
 
 Or with C<:scalar>, C<:list> (for both functions from B<List::Util>
-nd C<List::MoreUtil), C<:hash> or C<:data>:
+and C<List::MoreUtil>), C<:hash> or C<:data>:
 
   use More::Util qw(:list :data);
 
