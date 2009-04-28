@@ -84,12 +84,17 @@ and/or modify it under the same terms as Perl itself.
 =head1 BUGS
 
 This polutes your namespace chronically.  You can avoid this by
-specifying what you want to import in the arguments.  You can
-avoid exporting this to methods with B<namespace::clean>.
+specifying what you want to import in the arguments when you
+use the module.  You can avoid exposing imported functions as
+methods with B<namespace::clean>.
 
 Please see http://twoshortplanks.com/dev/mostutil for
 details of how to submit bugs, access the source control for
 this project, and contact the author.
+
+People will complain about this module not doing it the way
+they thought it should.  This is a bug with those people, not
+with this module.
 
 =head1 SEE ALSO
 
