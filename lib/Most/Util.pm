@@ -32,6 +32,10 @@ foreach my $module (@modules) {
   our %EXPORT_TAGS;
   push @EXPORT, @function_list;
   $EXPORT_TAGS{$module} = \@function_list;
+  $module =~ s/:.*//x;
+  $module = lc $module;
+  $EXPORT_TAGS{$module} ||= [];
+  push @{ $EXPORT_TAGS{$module} }, @function_list;
 }
 
 =head1 NAME
@@ -65,6 +69,11 @@ functions to import:
 Or by module name:
 
   use More::Util qw(:Scalar::Util :List::Util);
+
+Or with C<:scalar>, C<:list> (for both functions from B<List::Util>
+nd C<List::MoreUtil), C<:hash> or C<:data>:
+
+  use More::Util qw(:list :data);
 
 Or you can import nothing and use a fully qualified function name (why you'd want
 to do this is beyond me though):
